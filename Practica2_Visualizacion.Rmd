@@ -180,7 +180,7 @@ ggplot(ds, aes(x = Temp9am, y = Pressure9am, color= RainToday))+geom_point()
 #4
 ggplot(ds, aes(x = Temp9am, y = Pressure9am, color= RainToday))+geom_point() + ggtitle("Gráfico de dispersión temperatura frente a presion a las 9am")
 
-ggsave("figure/Ejercicio1.pdf")
+ggsave("figure/Ejercicio2.pdf")
 
 ```
 
@@ -196,6 +196,32 @@ ggsave("figure/Ejercicio1.pdf")
 * Almacena en formato **pdf** el gráfico resultante en un fichero denominado ``Ejercicio3.pdf``.
 
 ```{r Solucion ejercicio 3}
+#Carga el fichero ``iris.tidy.Rdata`` utilizando lo aprendido en la práctica 1.
+load("./data/iris_tidy.Rdata")
+
+#Utiliza la función **str()** para ver qué variables contiene el dataset.
+str(iris.tidy)
+
+# Crea un objeto ggplot...
+iris.grafico1 = ggplot(iris.tidy, aes(x = Species, y = Value)) 
+iris.grafico1 = iris.grafico1 + geom_point()
+iris.grafico2 = ggplot(iris.tidy, aes(x = Species, y = Value, color = Part)) + 
+geom_point()
+
+# Incluye información de la variable ``Measure``
+iris.grafico2 + facet_grid(Measure~.)
+iris.grafico2 + facet_grid(.~Measure)
+
+# Los valores de las dos variables se comparan mejor con la disposición por
+# columnas. 
+
+# Cambia ahora la capa **geom_point()** del gráfico anterior por la capa  **geom_jitter()**.
+ggplot(iris.tidy, aes(x = Species, y = Value, color = Part)) + 
+geom_jitter() + facet_grid(.~Measure) + ggtitle("Gráficos de dispersión")
+# Con respecto a geom_point(), en geom_jitter() los puntos no se disponen sobre 
+# rectas, si no que se visualizan más dispersas.
+
+ggsave("figure/Ejercicio3.pdf")
 
 ```
 
