@@ -134,6 +134,25 @@ p2
 * Almacena en formato **pdf** el gráfico resultante en un fichero denominado ``Ejercicio1.pdf``.
 
 ```{r Solucion ejercicio 1}
+# Cargamos los datos
+load("./data/weatherAUS.RData")
+#1
+grafica1 = ggplot(ds, aes(x = MinTemp, y = MaxTemp))
+grafica1
+
+#2
+ggplot(ds, aes(x = MinTemp, y = MaxTemp))+geom_point()
+
+#3
+grafica2 = ggplot(ds, aes(x = MinTemp, y = MaxTemp, color =RainTomorrow ))+geom_point()
+grafica2
+
+#4
+grafico3 = grafica2 + ggtitle("Gráfico de dispersión tiempo mínimo frente a tiempo máximo")
+grafico3
+
+#Guardamos el último gráfico
+ggsave("figure/Ejercicio1.pdf")
 
 ```
 
