@@ -165,6 +165,22 @@ ggsave("figure/Ejercicio1.pdf")
 * Almacena en formato **pdf** el gráfico resultante en un fichero denominado ``Ejercicio2.pdf``.
 
 ```{r Solucion ejercicio 2}
+#1
+ggplot(ds, aes(x = Temp9am, y = Pressure9am))+geom_point()
+
+#2
+ggplot(ds, aes(x = Temp9am, y = Pressure9am, shape= RainToday))+geom_point()
+
+#3
+ggplot(ds, aes(x = Temp9am, y = Pressure9am, color= RainToday))+geom_point()
+
+# La información de la variable RainToday se observa mucho mejor con la 
+# diferenciación por colores.
+
+#4
+ggplot(ds, aes(x = Temp9am, y = Pressure9am, color= RainToday))+geom_point() + ggtitle("Gráfico de dispersión temperatura frente a presion a las 9am")
+
+ggsave("figure/Ejercicio1.pdf")
 
 ```
 
